@@ -10,6 +10,7 @@
 \usepackage{lscape} %Pour le format paysage
 \usepackage{fancyhdr} %Pour le format du rapport
 \usepackage{xcolor} %Pour l'utilisation de couleur dans le texte
+\usepackage{tabularx}
 
 \usepackage{amsmath}
 \usepackage{amsfonts}
@@ -35,10 +36,10 @@
 
 \makeatletter
 \begin{titlepage}
-	\centering
-	\includegraphics[width=0.25\textwidth]{logo_supgalilee.jpg}
-	\hfill
-	\includegraphics[width=0.25\textwidth]{logo-paris13_bis.png} \\
+    \centering
+    \includegraphics[width=0.25\textwidth]{logo_supgalilee.jpg}
+    \hfill
+    \includegraphics[width=0.25\textwidth]{logo-paris13_bis.png} \\
     \vspace{5cm}
        {\LARGE \textbf{\@title}} \\
     \vspace{2em}
@@ -46,9 +47,9 @@
     \vspace{1em}
         {\textit{\@date}} \\
     \vspace{2em}
-    		\includegraphics[width=0.35\textwidth]{logo-esa.jpg}\\
-    	\vspace{2em}
-    		{Enseignants : Christine CHOPPY -- John CHAUSSARD} \\
+            \includegraphics[width=0.35\textwidth]{logo-esa.jpg}\\
+        \vspace{2em}
+            {Enseignants : Christine CHOPPY -- John CHAUSSARD} \\
     \vfill
 \end{titlepage}
 
@@ -108,11 +109,119 @@ plus cohérent possible.
 
 \section{Les acteurs}
 
+Les acteurs de notre syst\`eme sont : 
+\begin{itemize}
+    \item ESA
+    \item Satellite
+    \item Internaute
+    \item Sponsor
+    \item Grand Sponsor
+    \item Base de donn\'ees
+    \item Syst\`eme bancaire
+    \item Moteur de recherche \newline
+\end{itemize}
+
+Ces acteurs sont décrits dans les deux tableaux qui suivent.
+
 \subsection{Tableau acteur -- r\^ole -- description}
 
+\begin{tabularx}{\linewidth}{|c|c|X|}
+    \hline
+    \textbf{Acteur} & \textbf{R\^ole} & \textbf{Description} \\
+    \hline
+    
+    ESA & Primaire & L'\'equipe de l'ESA à la charge d
+    satellite et de son guidage \\
+    
+    \hline
+    
+    Satellite & Primaire & Satellite envoy\'e par l'ESA
+    vers la ceinture d'ast\'ero\"ides \\
+    
+    \hline
+    
+    Internaute & Primaire & Une personne qui se connecte sur
+    l'application \\
+    
+    \hline
+    
+    Sponsor & Primaire & Organisation qui finance une
+    partie du co\^ut du projet \\
+    
+    \hline
+    
+    Grand Sponsor & Primaire & Les trente premières 
+    organisations qui ont mis le plus d'argent dans 
+    la mission \\
+    
+    \hline
+    
+    Base de donn\'ees & Secondaire & Syst\`eme de base 
+    de donn\'ees du syst\`eme \\
+    
+    \hline
+    
+    Syst\`eme bancaire & Secondaire & Repr\'esente le 
+    programme permettant de g\'erer des transactions \\
+    
+    \hline
+    
+    Moteur de recherche & Secondaire & Programme permmettant de rechercher dans une base de donn\'ees des ressources
+    via des mots-clefs\\
+    \hline
+
+\end{tabularx}
 
 
 \subsection{Tableau acteur -- objectifs}
+
+
+\begin{tabularx}{\linewidth}{|c|X|}
+    \hline
+    \textbf{Acteur} & \textbf{R\^ole} & \textbf{Description} \\
+    \hline
+    
+    ESA & Guider le satellite, accepter ou refuser des demandes de
+    positionnement\\
+    
+    \hline
+    
+    Satellite & Transmettre des donn\'ees \\
+    
+    \hline
+    
+    Internaute & Naviguer sur l'application, voir acheter un
+    surnom pour un corps c\'eleste \\
+    
+    \hline
+    
+    Sponsor & R\'ecup\'erer les donn\'ees du satellite \\
+    
+    \hline
+    
+    Grand Sponsor & Demander \`a l'ESA de positionner le satellite
+    \`a un endroit pr\'ecis pour r\'ecup\'erer certaines donn\'ees du
+    satellite \\
+    
+    \hline
+    
+    Base de donn\'ees & Recueillir et stocker les donn\'ees fournis
+    par le satellite \\
+    
+    \hline
+    
+    Syst\`eme bancaire & R\'ealiser les transactions entre les
+    internautes et l'application \\
+    
+    \hline
+    
+    Moteur de recherche & Valider ou non, un nom pour un corps 
+    c\'eleste \\
+    \hline
+
+\end{tabularx}
+
+
 
 \newpage
 
@@ -164,11 +273,29 @@ plus cohérent possible.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Conclusion}
-Ce projet nous a permis d'apprendre à créer des diagrammes de manière informatique. Pour réaliser l'ensemble des diagrammes nous avons utilisé le logiciel StarUML. Celui-ci permet de créer un large éventail de diagramme incluant ceux vu en cours. Nous avons également appris à utiliser le langage LaTeX en réalisant ce rapport sur le site sharelatex.com, qui permet de travailler à deux simultanément sur un projet LaTeX.
+Ce projet nous a permis d'apprendre à créer des diagrammes de
+manière informatique. Pour réaliser l'ensemble des diagrammes
+nous avons utilisé le logiciel StarUML. Celui-ci permet de créer
+un large éventail de diagramme incluant ceux vu en cours. Nous
+avons également appris à utiliser le langage LaTeX en réalisant
+ce rapport sur le site sharelatex.com, qui permet de travailler
+à deux simultanément sur un projet LaTeX.
 
-StarUML est un très bon logiciel néanmoins nous avons eu du mal à réaliser le diagramme de communication dessus car nous n'avons pas réussi à obtenir la synthaxe \textit{1.2:} . Pour résoudre ce problème nous avons supprimé le nom par defaut, et nous avons rajouté une zone de texte libre à la place.
+StarUML est un très bon logiciel néanmoins nous avons eu du
+mal à réaliser le diagramme de communication dessus car nous
+n'avons pas réussi à obtenir la synthaxe \textit{1.2:} . Pour
+résoudre ce problème nous avons supprimé le nom par defaut, et
+nous avons rajouté une zone de texte libre à la place.
 
-Grâce à ce projet nous savons réaliser de nombreux diagrammes correspondant à un cas donné. Nous savons quels sont les apports de chaque diagramme selon ce que nous avons envie d'exposer. Nous avons également appris à utiliser le bon diagramme et les bonnes informations pour construire un autre type de diagramme.
+Grâce à ce projet nous savons réaliser de nombreux diagrammes
+correspondant à un cas donné. Nous savons quels sont les apports
+de chaque diagramme selon ce que nous avons envie d'exposer.
+Nous avons également appris à utiliser le bon diagramme et
+les bonnes informations pour construire un autre type de 
+diagramme.
 
-Lors de la réalisation du projet, ce qui nous a posé le plus de difficulté, c'est le niveau de détail à appliquer à chaque diagramme pour que celui-ci retranscrive le plus d'informations tout en restant lisible.
+Lors de la réalisation du projet, ce qui nous a posé le plus de
+difficulté, c'est le niveau de détail à appliquer à chaque
+diagramme pour que celui-ci retranscrive le plus d'informations
+tout en restant lisible.
 \end{document}
