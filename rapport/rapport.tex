@@ -11,6 +11,10 @@
 \usepackage{fancyhdr} %Pour le format du rapport
 \usepackage{xcolor} %Pour l'utilisation de couleur dans le texte
 \usepackage{tabularx}
+\frenchbsetup{StandardLists=true}
+\usepackage{enumitem}
+\usepackage{pifont}
+\usepackage{listings}
 
 \usepackage{amsmath}
 \usepackage{amsfonts}
@@ -190,7 +194,7 @@ Ces acteurs sont décrits dans les deux tableaux qui suivent.
     
     \hline
     
-    Internaute & Naviguer sur l'application, voir acheter un
+    Internaute & Naviguer sur l'application, voire acheter un
     surnom pour un corps c\'eleste \\
     
     \hline
@@ -240,6 +244,316 @@ Ces acteurs sont décrits dans les deux tableaux qui suivent.
 \subsection{Développement des cas d’utilisations}
 
 
+\subsubsection{Inscription}
+
+\begin{tabular}{ll}
+    \textbf{Niveau} & But utilisateur \\
+    \textbf{But} & Créer un compte sur le système \\
+    \textbf{Acteur principal} & Internaute \newline
+\end{tabular}
+~\\
+~\\
+
+
+\textbf{Scénario principal}
+
+\begin{enumerate}
+    \item L’internaute rempli le formulaire en saisissant nom, prénom, adresse mail, mot de passe et sa confirmation, date de naissance, adresse et numéro de téléphone. Il valide le formulaire.
+    \item Le système confirme la bonne réception du formulaire et envoi un mail pour activer le compte.
+    \item L’internaute clique sur le lien d’activation du mail envoyé par le système.
+    \item Le système confirme à l’utilisateur que son compte est bien activé.
+\end{enumerate}
+
+
+\textbf{Autres scénarios}
+
+\begin{itemize}[label=\ding{0}]
+    \item 2.a.  L’adresse mail existe déjà dans la base de données.
+    \item 2.a.1.    Le système demande à ce qu’une autre adresse mail soit rentrée.
+    \item 2.b.  Le mot de passe rentré ne respecte pas les consignes de sécurité.
+    \item 2.b.1.    Le système demande à ce qu’un autre mot de passe conforme soit rentré.
+    \item 2.c.  Le mot de passe de confirmation ne correspond pas avec le mot de passe rentré.
+    \item 2.c.1.    Le système invite l’internaute à reconfirmer le mot de passe en mettant le même que celui choisi.
+    \item 2.d.  L’adresse mail n’existe pas.
+    \item 2.d.1.    Le système demande de rentrer une bonne adresse mail.
+\end{itemize}
+
+
+
+\subsubsection{Connexion}
+
+\begin{tabular}{ll}
+    \textbf{Niveau} & But utilisateur \\
+    \textbf{But} & authentifier l’internaute auprès du système \\
+    \textbf{Acteur principal} & Internaute \newline
+\end{tabular}
+~\\
+~\\
+
+\textbf{Scénario principal}
+
+\begin{enumerate}
+    \item L’internaute saisit son adresse mail avec laquelle il s’est inscrit (login) et son mot de passe, et clique sur « Se connecter ».
+    \item Le système envoie une clef de session, et renvoie l’internaute vers sa page « profil ».
+\end{enumerate}
+
+\textbf{Autre scénarios}
+
+\begin{itemize}[label=\ding{0}]
+    \item 2.a.  Le login n’existe pas dans la base de données du système.
+    \item 2.a.1.    Le système envoie un message d’erreur et propose de rediriger l’internaute      vers la page d’inscription.
+    \item 2.b.  Le mot de passe n’est pas correct.
+    \item 2.b.1.    Le système envoie un message d’erreur et propose de rediriger l’internaute      vers la page d’inscription.
+\end{itemize}
+
+
+
+\subsubsection{Financer projet}
+
+\begin{tabular}{ll}
+    \textbf{Niveau} & But utilisateur \\
+    \textbf{But} & Investir dans la mission pour devenir sponsor de la mission \\
+    \textbf{Acteur principal} & Sponsor \\
+    \textbf{Acteur secondaire} & Système bancaire \newline
+\end{tabular}
+~\\
+~\\
+
+\textbf{Scénario principal}
+
+\begin{enumerate}
+    \item Le sponsor rempli un formulaire pour renseigner les coordonnées de l’organisation qu’il représente.
+    \item Le sponsor saisit le montant du financement et clique sur payer.
+    \item Le sponsor renseigne les coordonnées bancaires.
+    \item Le transfert bancaire se réalise.
+    \item Le rang du sponsor est dévoilé au sponsor, et lui indique s’il figure parmi les Grands Sponsors.
+    \item Le sponsor rentre parmi les 30 plus grands sponsors
+    \item Un mail lui est envoyé pour lui confirmer sa position.
+    \item Un mail est envoyé au 31ème sponsor pour lui indiquer qu’il ne fait plus parti des Grands Sponsors.
+\end{enumerate}
+
+\textbf{Autre scénarios}
+
+\begin{itemize}[label=\ding{0}]
+    \item 1.a. Nous ne sommes plus dans la phase de financement.
+    \item 1.a.1. Un message est dévoilé au sponsor pour le lui en avertir.
+    \item 1.a.1. Le sponsor est invité à retourner sur la page d’accueil.
+    \item 4.a. Les coordonnées bancaires comportent des erreurs.
+    \item 4.a.1. Le sponsor rentre ses coordonnées bancaires en les corrigeant.
+    \item 5.a.   Le transfert bancaire n’a pas abouti pour une raison externe au système décrit.
+    \item 5.a.1. L’erreur est notifiée au sponsor.
+    \item 6.a.  Le sponsor ne rentre pas parmi les 30 plus grands sponsors.
+    \item 6.a.1. Seul le mail de confirmation de paiement est envoyé.
+
+\end{itemize}
+
+
+
+\subsubsection{Connaître rang}
+
+\begin{tabular}{ll}
+    \textbf{Niveau} & Sous-fonction \\
+    \textbf{But} & Prendre connaissance du classement du financement du sponsor par rapport aux autres sponsors. \\
+    \textbf{Acteur principal} & Sponsor \newline
+\end{tabular}
+~\\
+~\\
+
+\textbf{Scénario principal}
+
+\begin{enumerate}
+    \item Le sponsor prend connaissance de son rang par rapport aux autres utilisateurs.
+    \item Le sponsor décide d'augmenter son financement
+\end{enumerate}
+
+\textbf{Autre scénario}
+
+\begin{itemize}[label=\ding{0}]
+    \item 2.a   Le sponsor décide de ne pas augmenter son financement
+
+\end{itemize}
+
+
+\subsubsection{Augmenter financement}
+
+\begin{tabular}{ll}
+    \textbf{Niveau} & But utilisateur \\
+    \textbf{But} & Augmenter l’argent déjà investi dans le projet \\
+    \textbf{Acteur principal} & Sponsor \\
+    \textbf{Acteur secondaire} & Système bancaire \newlin
+\end{tabular}
+~\\
+~\\
+
+\textbf{Scénario principal}
+
+\begin{enumerate}
+    \item Le sponsor saisit le montant qu’il souhaite rajouter à celui déjà investi et clique sur payer.
+    \item Le transfert bancaire se réalise.
+    \item Le nouveau rang du sponsor lui est dévoilé.
+    \item Le sponsor rentre parmi les 30 plus grands sponsors
+    \item Un mail lui est envoyé pour lui confirmer sa position.
+    \item Un mail est envoyé au 31ème sponsor pour lui indiquer qu’il ne fait plus parti des Grands Sponsors.
+\end{enumerate}
+
+\textbf{Autres scénarios}
+
+\begin{itemize}[label=\ding{0}]
+    \item 3.a. Le transfert bancaire n’a pas abouti pour une raison externe au système décrit.
+    \item 3.a.1. L’erreur est notifiée au sponsor.
+    \item 4.a.  Le sponsor ne rentre pas parmi les 30 plus grands sponsors.
+    \item 4.a.1. Seul le mail de confirmation de paiement est envoyé.
+\end{itemize}
+
+
+\subsubsection{Parcourir objets célestes}
+
+\begin{tabular}{ll}
+    \textbf{Niveau} & Sous-fonction \\
+    \textbf{But} & Prendre connaissance des objets célestes qui ne sont pas encore nommés \\
+    \textbf{Acteur principal} & Internaute \newline
+\end{tabular}
+~\\
+~\\
+
+\textbf{Scénario principal}
+
+\begin{enumerate}
+    \item L’internaute peut parcourir une liste d’objets célestes, avec une courte description de chacun d’entre eux.
+    \item Il clique sur un objet céleste et une externe description complète se déroule.
+    \item Il décide d'acheter un surnom pour cette objet céleste.
+\end{enumerate}
+
+\textbf{Autres scénarios}
+
+\begin{itemize}[label=\ding{0}]
+    \item 2.a. Il ne clique sur aucun objet céleste.
+\end{itemize}
+
+
+
+\subsubsection{Acheter surnom}
+
+\begin{tabular}{ll}
+    \textbf{Niveau} & But utilisateur \\
+    \textbf{But} & Donner un surnom à un objet céleste \\
+    \textbf{Acteur principal} & Internaute \\
+    \textbf{Acteur secondaire} & Système bancaire, Moteur de recherche \newline
+\end{tabular}
+~\\
+~\\
+
+\textbf{Scénario principal}
+
+\begin{enumerate}
+    \item L’internaute propose un surnom en le saisissant sur le système.
+    \item Le moteur de recherche valide le surnom.
+    \item L’internaute choisit de payer soit en carte bleue, soit en transfert bancaire.
+    \item L’internaute rentre ses coordonnées bancaires en fonction de son choix.
+    \item Le paiement est validé.
+    \item Un mail est envoyé à l’internaute, lui confirmant l’attribution du surnom à l’objet céleste choisi.
+\end{enumerate}
+
+\textbf{Autres scénarios}
+
+\begin{itemize}[label=\ding{0}]
+    \item 2.a.  Le moteur de recherche invalide le surnom.
+    \item 2.a.1.    On lui indique la raison.
+    \item 2.a.2.    On lui propose de rentrer un autre surnom.
+    \item 5.a.  L’internaute a rentré de mauvaises informations bancaires.
+    \item 5.a.1.    On lui demande de rentrer les bonnes informations.
+    \item 5.b.  Le paiement est invalidé pour une raison externe au système décrit.
+    \item 5.b.1.    L’erreur est notifié à l’internaute.
+
+\end{itemize}
+
+
+\subsubsection{Valider surnom}
+
+\begin{tabular}{ll}
+    \textbf{Niveau} & But utilisateur \\
+    \textbf{But} & Donner un surnom à un objet céleste \\
+    \textbf{Acteur principal} & Internaute \\
+    \textbf{Acteur secondaire} & Moteur de recherche \newline
+\end{tabular}
+~\\
+~\\
+
+\textbf{Scénario principal}
+
+\begin{enumerate}
+    \item Le moteur de recherche lance la recherche à partir d’un surnom choisi par un internaute, sur la base de données des surnoms déjà pris.
+    \item   Le moteur de recherche ne trouve rien.
+    \item   Le moteur de recherche lance la recherche à partir d’un surnom choisi par un internaute, sur la base de données des surnoms interdits selon les règles de nommage définit par l’ESA .
+    \item   Le moteur de recherche ne trouve rien.
+    \item   On notifie à l’internaute que le surnom est validé.
+\end{enumerate}
+
+\textbf{Autres scénarios}
+
+\begin{itemize}[label=\ding{0}]
+    \item 2.a.  Le surnom est déjà pris.
+    \item 2.a.1.    On notifie à l’internaute que le surnom est déjà pris.
+    \item 4.a.  Le surnom est interdit.
+    \item 4.a.1.    On notifie à l’internaute que le surnom est interdit selon les règles de nommage définit par l’ESA.
+\end{itemize}
+
+
+\subsubsection{Payer en CB}
+
+\begin{tabular}{ll}
+    \textbf{Niveau} & But utilisateur \\
+    \textbf{But} & Réaliser un paiement en carte bleue \\
+    \textbf{Acteur principal} & Internaute \\
+    \textbf{Acteur secondaire} & Système bancaire \newline
+\end{tabular}
+~\\
+~\\
+
+\textbf{Scénario principal}
+
+\begin{enumerate}
+    \item L'internaute fournit les informations de sa carte bleue.
+    \item Le paiement est réalisé.
+    \item Un mail de confirmation lui est envoyé.
+\end{enumerate}
+
+\textbf{Autres scénarios}
+
+\begin{itemize}[label=\ding{0}]
+    \item 2.a. L'internaute a rentré de mauvaises informations.
+    \item 2.a.1. Le système affiche un message d'erreur.
+    \item 2.a.2. Le paiment n'est pas réalisé.
+\end{itemize}
+
+\subsubsection{Payer en transfert bancaire}
+
+\begin{tabular}{ll}
+    \textbf{Niveau} & But utilisateur \\
+    \textbf{But} & Réaliser un paiement par transfert bancaire \\
+    \textbf{Acteur principal} & Internaute \\
+    \textbf{Acteur secondaire} & Système bancaire \newline
+\end{tabular}
+~\\
+~\\
+
+\textbf{Scénario principal}
+
+\begin{enumerate}
+    \item L'internaute fournit les informations de son compte bancaire.
+    \item Le virement est réalisé.
+    \item Un mail de confirmation lui est envoyé.
+\end{enumerate}
+
+\textbf{Autres scénarios}
+
+\begin{itemize}[label=\ding{0}]
+    \item 2.a. L'internaute a rentré de mauvaises informations.
+    \item 2.a.1. Le système affiche un message d'erreur.
+    \item 2.a.2. Le virement n'est pas réalisé.
+\end{itemize}
+
+
 \newpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -248,10 +562,51 @@ Ces acteurs sont décrits dans les deux tableaux qui suivent.
 
 \subsection{La demande de positionnement}
 
+Le grand sponsor a pour but de demander auprès de l’ESA de positionner le satellite à un endroit précis via une requête. L’ESA accepte ou refuse la requête. Elle notifie la décision au grand sponsor.
+
+Si la demande est accéptée, seul le grand sponsor à l’origine de la requête peut accéder aux données du satellite.
+
+Pour être un Grand Sponsor il faut pouvoir être une organisation qui finance une partie du projet, et être parmi les 30 sponsors qui ont le plus participé. Un grand sponsor ne peut effectuer qu’une seule requête à la fois.
+
+~\\
+~\\
+
+
+\begin{tabular}{ll}
+    \textbf{Acteur principal} & Grand Sponsor \\
+    \textbf{Acteur secondaire} & ESA \\
+    \textbf{Précondition} & Le Grand Sponsor s’est déjà identifié, et a été identifié comme tel.
+\end{tabular}
+~\\
+~\\
+
+
+\includegraphics[width=1.1\textwidth]{dc-demande-positionnement.png}
 
 \newpage
 
 \subsection{L'achat d'un surnom}
+
+Cas d’utilisation : Acheter Surnom
+
+L’internaute veux pouvoir associer un surnom à un objet céleste qui n’en a toujours pas.
+Pour cela il rentre d’abord une proposition de surnom. Cette proposition est soit validée, soit refusée par le moteur de recherche.
+Dans le cas où le surnom est validé, l’internaute procède au paiement en choisissant soit de payer en Carte Bleue, soit par transfert bancaire.
+
+~\\
+~\\
+
+
+\begin{tabular}{ll}
+    \textbf{Acteur principal} & Internaute \\
+    \textbf{Acteurs secondaires} & Système bancaire, Moteur de recherche \\
+    \textbf{Précondition} & L’internaute est identifié sur le système.
+\end{tabular}
+~\\
+~\\
+
+
+\includegraphics[scale=0.5]{dc-acheter-surnom.png}
 
 \newpage
 
@@ -259,6 +614,48 @@ Ces acteurs sont décrits dans les deux tableaux qui suivent.
 
 \section{L'int\'eraction \'el\'ementaire de la demande de positionnement}
 
+Ici nous allons décrire l'intéractio élémentaire de la demande de positionnement. \newline
+
+Le système ne peut accepter et refuser une demande simultanément.\\
+L’utilisateur a demandé à positionner le satellite. \\
+Il faut auparavant que l’utilisateur du système soit bien un grand sponsor. \\
+Pour que sa demande de positionnement soit acceptée il faut que les coordonnées où il souhaite déplacer le satellite ne soit pas dangereuses. \\
+Après avoir reçu la demande de positionnement, le système génère un mot de passe qui lui permettra d’accéder aux données que lui seul pourra récupérer. \\
+
+
+\textbf{Incompatibilité} \\
+
+\begin{lstlisting}
+Demande_Positionnement_Acceptee(Coordonnees, infos_utilisateur, mdp) 
+incompatible with 
+Demande_Positionnement_Refusee(Coordonnees, infos_utilisateur)
+\end{lstlisting}
+
+\vspace{2cm}
+
+\textbf{Précondition} \\
+
+\begin{lstlisting}
+if Demande_Positionnement_Acceptee(Coordonnees, infos_utilisateur, mdp)
+happen then in any case before 
+sponsor_demande_postionnement(Coordoonnes, infos_utilisateurs) 
+and est_sponsor(infos_utilisateurs) 
+and rang(infos_utilisateurs) <= 30 
+and not(dangereux(Coordonnees)) 
+and in any case 
+before sponsor_demande_postionnement(Coordoonnes, infos_utilisateurs)
+\end{lstlisting}
+
+\vspace{2cm}
+
+\textbf{Post-condition} \\
+
+\begin{lstlisting}
+If Demande_Positionnement_Acceptee(Coordonnees, infos_utilisateur, mdp) 
+happen then in any case next 
+Generer_mdp_donnees(infos_utilisateurs, mdp) 
+and Notifier_decision(infos_utilisateurs, mdp) happen
+\end{lstlisting}
 
 \newpage
 
@@ -267,6 +664,40 @@ Ces acteurs sont décrits dans les deux tableaux qui suivent.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{L'observateur sur le rang d'un sponsor}
+
+Nous finissons avec la description de l'observateur sur le rang d'un sponsor.
+
+\vspace{1cm}
+
+Deux utilisateurs ne peuvent être associés au même rang : 
+
+\begin{lstlisting}
+Rang(infos_utilisateur1) != rang(infos_utilisateur2)
+\end{lstlisting}
+
+\vspace{1cm}
+
+Le rang d’un utilisateur est forcément strictement plus grand que 0.
+
+\begin{lstlisting}
+Rang(infos_utilisateur) > 0
+\end{lstlisting}
+
+\vspace{1cm}
+
+Le rang d’un utilisateur est plus petit que le nombre de sponsors qu’il y a sur le système.
+
+\begin{lstlisting}
+Rang(infos_utilisateur) <= nombreSponsors(infos_utilisateur)
+\end{lstlisting}
+
+\vspace{1cm}
+
+Le rang d’un utilisateur n’est défini que pour un sponsor : 
+
+\begin{lstlisting}
+Rang(infos_utilisateur) and est_sponsor(infos_utilisateur)
+\end{lstlisting}
 
 \newpage
 
