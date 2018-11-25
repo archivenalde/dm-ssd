@@ -1,0 +1,174 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[francais]{babel}
+\usepackage[T1]{fontenc}
+
+\usepackage{graphicx}
+\usepackage[margin=3cm]{geometry}
+\usepackage{hyperref} %Pour les liens dans le sommaire
+\usepackage{lscape} %Pour le format paysage
+\usepackage{fancyhdr} %Pour le format du rapport
+\usepackage{xcolor} %Pour l'utilisation de couleur dans le texte
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+
+\definecolor{myGreen}{rgb}{0,0.46,0.38} %#007561
+\definecolor{myKaki}{rgb}{0.60,0.45,0} %#997200
+\definecolor{myBlue}{rgb}{0,0.45,0.68} %#0073ad
+\definecolor{myPurple}{rgb}{0.51,0.25,0.76} %#8241c2
+\definecolor{myOrange}{rgb}{0.95,0.50,0.05} %#f17f0d
+\definecolor{myDarkBlue}{rgb}{0,0,0.63} %#0000a0
+\definecolor{myDarkRed}{rgb}{0.44,0,0} %#700000
+\definecolor{myRed}{rgb}{0.73,0.04,0.11} %e00909
+\definecolor{myGrey}{rgb}{0.439,0.439,0.439} %707070
+
+
+\author{Vincent BEUGNET - Adlane LADJAL}
+\title{Devoir de GLOA \\ Application de commande de satellite}
+
+
+\begin{document}
+
+\makeatletter
+\begin{titlepage}
+	\centering
+	\includegraphics[width=0.25\textwidth]{logo_supgalilee.jpg}
+	\hfill
+	\includegraphics[width=0.25\textwidth]{logo-paris13_bis.png} \\
+    \vspace{5cm}
+       {\LARGE \textbf{\@title}} \\
+    \vspace{2em}
+        {\large \@author }\\
+    \vspace{1em}
+        {\textit{\@date}} \\
+    \vspace{2em}
+    		\includegraphics[width=0.35\textwidth]{logo-esa.jpg}\\
+    	\vspace{2em}
+    		{Enseignants : Christine CHOPPY -- John CHAUSSARD} \\
+    \vfill
+\end{titlepage}
+
+
+%insertion de la page blanche
+\newpage
+~
+\newpage
+
+%Table des matieres
+\renewcommand{\contentsname}{Sommaire}
+\tableofcontents
+
+\newpage
+
+\pagestyle{empty}
+
+\section{Introduction}
+Le présent devoir a été réalisé par Vincent Beugnet 
+et Adlane LADJAL, au cours de notre deuxième année 
+de la  formation d'Ingénieur Informatique à 
+Sup Galilée. Il a été réalisé dans le cadre du cours 
+Génie Logiciel Avancée (GLOA). Ce cours est la continuité
+du cours de Modélisation des Systèmes Informatiques
+que nous avons eu en première année des études d'ingénieur.
+Le but de ce cours est de s'intéresser aux méthodes pour
+décrire le fonctionnement d'un logiciel afin qu'ils répondent
+au mieux aux besoins utilisateurs.
+
+Ce rapport de projet décrit la réflexion que nous avons pu 
+avoir pour réaliser le système informatique suivant.
+
+Nous devions concevoir le système informatique permettant
+de gérer une application pour l’\textit{European Space Agency}
+(ESA). L’ESA veut pouvoir envoyer un satellite vers la ceinture
+d'astéro\"ides pour effectuer toutes sortes de mesures.
+Pour se faire elle a besoin de sponsors afin de financer une
+partie du projet. Mais elle veut aussi sensibiliser : elle veut
+pouvoir alors offrir la possibilité à quiconque d'acheter un
+surnom pour un objet céleste, en plus de son nom scientifique.
+
+Ce fut un long travail, où des choix ont dû être fait, 
+comme par exemple la représentation ou non de certaines 
+choses demandées dans le cahier des charges. Il a fallu 
+le lire et le relire afin de rester le 
+plus cohérent possible.
+
+\newpage
+
+
+\section{Définition de la borne du système}
+
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Les acteurs}
+
+\subsection{Tableau acteur -- r\^ole -- description}
+
+
+
+\subsection{Tableau acteur -- objectifs}
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Les cas d’utilisations}
+
+\subsection{Le diagramme de cas d’utilisations}
+
+\vspace{4cm}
+
+\includegraphics[scale=0.25]{det.png}
+
+\newpage
+
+\subsection{Développement des cas d’utilisations}
+
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Schémas de collaboration}
+
+\subsection{La demande de positionnement}
+
+
+\newpage
+
+\subsection{L'achat d'un surnom}
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{L'int\'eraction \'el\'ementaire de la demande de positionnement}
+
+
+\newpage
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{L'observateur sur le rang d'un sponsor}
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Conclusion}
+Ce projet nous a permis d'apprendre à créer des diagrammes de manière informatique. Pour réaliser l'ensemble des diagrammes nous avons utilisé le logiciel StarUML. Celui-ci permet de créer un large éventail de diagramme incluant ceux vu en cours. Nous avons également appris à utiliser le langage LaTeX en réalisant ce rapport sur le site sharelatex.com, qui permet de travailler à deux simultanément sur un projet LaTeX.
+
+StarUML est un très bon logiciel néanmoins nous avons eu du mal à réaliser le diagramme de communication dessus car nous n'avons pas réussi à obtenir la synthaxe \textit{1.2:} . Pour résoudre ce problème nous avons supprimé le nom par defaut, et nous avons rajouté une zone de texte libre à la place.
+
+Grâce à ce projet nous savons réaliser de nombreux diagrammes correspondant à un cas donné. Nous savons quels sont les apports de chaque diagramme selon ce que nous avons envie d'exposer. Nous avons également appris à utiliser le bon diagramme et les bonnes informations pour construire un autre type de diagramme.
+
+Lors de la réalisation du projet, ce qui nous a posé le plus de difficulté, c'est le niveau de détail à appliquer à chaque diagramme pour que celui-ci retranscrive le plus d'informations tout en restant lisible.
+\end{document}
